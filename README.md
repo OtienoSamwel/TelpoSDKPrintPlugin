@@ -1,0 +1,2 @@
+# ToastyPlugin
+Cordova test plugin
