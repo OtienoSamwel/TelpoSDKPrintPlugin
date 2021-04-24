@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-toastyplugin" version="0.0.1">
+    <name>ToastyPlugin</name>
+
+    <description>An Android Cordova plugin that allows users to display simple Toast messages at the bottom of the screen.</description>
+    <license>MIT</license>
+
+    <keywords>cordova,android,toast,message,alert</keywords>
+    <repo>https://github.com/stanidesis/toastyplugin/Toast-PhoneGap-Plugin.git</repo>
+    <issue>https://github.com/stanidesis/toastyplugin/issues</issue>
+  
+    <engines>
+        <engine name="cordova" version=">=3.0.0"/>
+    </engines>
+  
+    <js-module src="www/toastyplugin.js" name="toastyPlugin">
+        <clobbers target="window.plugins.toastyPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="ToastyPlugin">
+                <param name="android-package" value="com.stanleyidesis.cordova.plugin.ToastyPlugin"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/libs/SmartCardLib.jar" target-dir="libs" />
+        <source-file src="src/android/libs/telpo_api.jar" target-dir="libs" />
+        <source-file src="src/android/libs/core-3.1.0.jar" target-dir="libs" />
+
+        <source-file src="src/android/ToastyPlugin.java" target-dir="src/com/stanleyidesis/cordova/plugin" />
+
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libIDFpr.so" target="jniLibs/armeabi-v7a/libIDFpr.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libwlt2bmp.so" target="jniLibs/armeabi-v7a/libwlt2bmp.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libusb_util.so" target="jniLibs/armeabi-v7a/libusb_util.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_serial.so" target="jniLibs/armeabi-v7a/libtelpo_serial.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libfingerprint.so" target="jniLibs/armeabi-v7a/libfingerprint.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libdecode.so" target="jniLibs/armeabi-v7a/libdecode.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libsystem_util.so" target="jniLibs/armeabi-v7a/libsystem_util.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libidcard900.so" target="jniLibs/armeabi-v7a/libidcard900.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_printer_581.so" target="jniLibs/armeabi-v7a/libtelpo_printer_581.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_printer5880.so" target="jniLibs/armeabi-v7a/libtelpo_printer5880.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_printer.so" target="jniLibs/armeabi-v7a/libtelpo_printer.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libidfprcap.so" target="jniLibs/armeabi-v7a/libidfprcap.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_printer_48.so" target="jniLibs/armeabi-v7a/libtelpo_printer_48.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libAlUSB.so" target="jniLibs/armeabi-v7a/libAlUSB.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libledpower.so" target="jniLibs/armeabi-v7a/libledpower.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libidcard.so" target="jniLibs/armeabi-v7a/libidcard.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_msr.so" target="jniLibs/armeabi-v7a/libtelpo_msr.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libzksensorcore.so" target="jniLibs/armeabi-v7a/libzksensorcore.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libzkwltdecode.so" target="jniLibs/armeabi-v7a/libzkwltdecode.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libpicc.so" target="jniLibs/armeabi-v7a/libpicc.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libcard_reader.so" target="jniLibs/armeabi-v7a/libcard_reader.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libtelpo_nfc.so" target="jniLibs/armeabi-v7a/libtelpo_nfc.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libserial_port.so" target="jniLibs/armeabi-v7a/libserial_port.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libled.so" target="jniLibs/armeabi-v7a/libled.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libIDFpr2.so" target="jniLibs/armeabi-v7a/libIDFpr2.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libcollect.so" target="jniLibs/armeabi-v7a/libcollect.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libposutil.so" target="jniLibs/armeabi-v7a/libposutil.so"/>
+        <resource-file src="src/android/jnilibs/armeabi-v7a/libmoneybox.so" target="jniLibs/armeabi-v7a/libmoneybox.so"/>
+    
+        <resource-file src="src/android/jnilibs/armeabi/libIDFpr.so" target="jniLibs/armeabi/libIDFpr.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libwlt2bmp.so" target="jniLibs/armeabi/libwlt2bmp.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libusb_util.so" target="jniLibs/armeabi/libusb_util.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_serial.so" target="jniLibs/armeabi/libtelpo_serial.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libfingerprint.so" target="jniLibs/armeabi/libfingerprint.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libdecode.so" target="jniLibs/armeabi/libdecode.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libsystem_util.so" target="jniLibs/armeabi/libsystem_util.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libidcard900.so" target="jniLibs/armeabi/libidcard900.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_printer_581.so" target="jniLibs/armeabi/libtelpo_printer_581.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_printer5880.so" target="jniLibs/armeabi/libtelpo_printer5880.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_printer.so" target="jniLibs/armeabi/libtelpo_printer.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libidfprcap.so" target="jniLibs/armeabi/libidfprcap.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_printer_48.so" target="jniLibs/armeabi/libtelpo_printer_48.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libAlUSB.so" target="jniLibs/armeabi/libAlUSB.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libledpower.so" target="jniLibs/armeabi/libledpower.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libidcard.so" target="jniLibs/armeabi/libidcard.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_msr.so" target="jniLibs/armeabi/libtelpo_msr.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libzksensorcore.so" target="jniLibs/armeabi/libzksensorcore.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libzkwltdecode.so" target="jniLibs/armeabi/libzkwltdecode.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libpicc.so" target="jniLibs/armeabi/libpicc.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libcard_reader.so" target="jniLibs/armeabi/libcard_reader.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libtelpo_nfc.so" target="jniLibs/armeabi/libtelpo_nfc.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libserial_port.so" target="jniLibs/armeabi/libserial_port.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libled.so" target="jniLibs/armeabi/libled.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libIDFpr2.so" target="jniLibs/armeabi/libIDFpr2.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libcollect.so" target="jniLibs/armeabi/libcollect.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libposutil.so" target="jniLibs/armeabi/libposutil.so"/>
+        <resource-file src="src/android/jnilibs/armeabi/libmoneybox.so" target="jniLibs/armeabi/libmoneybox.so"/>
+
+
+        <resource-file src="src/android/jnilibs/arm64-v8a/libIDFpr.so" target="jniLibs/arm64-v8a/libIDFpr.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libwlt2bmp.so" target="jniLibs/arm64-v8a/libwlt2bmp.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libusb_util.so" target="jniLibs/arm64-v8a/libusb_util.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_serial.so" target="jniLibs/arm64-v8a/libtelpo_serial.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libfingerprint.so" target="jniLibs/arm64-v8a/libfingerprint.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libdecode.so" target="jniLibs/arm64-v8a/libdecode.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libsystem_util.so" target="jniLibs/arm64-v8a/libsystem_util.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libidcard900.so" target="jniLibs/arm64-v8a/libidcard900.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_printer_581.so" target="jniLibs/arm64-v8a/libtelpo_printer_581.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_printer5880.so" target="jniLibs/arm64-v8a/libtelpo_printer5880.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_printer.so" target="jniLibs/arm64-v8a/libtelpo_printer.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libidfprcap.so" target="jniLibs/arm64-v8a/libidfprcap.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_printer_48.so" target="jniLibs/arm64-v8a/libtelpo_printer_48.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libAlUSB.so" target="jniLibs/arm64-v8a/libAlUSB.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libledpower.so" target="jniLibs/arm64-v8a/libledpower.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libidcard.so" target="jniLibs/arm64-v8a/libidcard.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_msr.so" target="jniLibs/arm64-v8a/libtelpo_msr.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libzksensorcore.so" target="jniLibs/arm64-v8a/libzksensorcore.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libzkwltdecode.so" target="jniLibs/arm64-v8a/libzkwltdecode.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libpicc.so" target="jniLibs/arm64-v8a/libpicc.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libcard_reader.so" target="jniLibs/arm64-v8a/libcard_reader.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libtelpo_nfc.so" target="jniLibs/arm64-v8a/libtelpo_nfc.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libserial_port.so" target="jniLibs/arm64-v8a/libserial_port.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libled.so" target="jniLibs/arm64-v8a/libled.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libIDFpr2.so" target="jniLibs/arm64-v8a/libIDFpr2.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libcollect.so" target="jniLibs/arm64-v8a/libcollect.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libposutil.so" target="jniLibs/arm64-v8a/libposutil.so"/>
+        <resource-file src="src/android/jnilibs/arm64-v8a/libmoneybox.so" target="jniLibs/arm64-v8a/libmoneybox.so"/>
+    </platform>
+</plugin>
