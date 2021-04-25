@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-
+import android.text.Html;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
@@ -92,10 +92,10 @@ public class PrintingPlugin extends CordovaPlugin {
 		mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
 		mUsbThermalPrinter.setLeftIndent(leftDistance);
 		mUsbThermalPrinter.setLineSpace(lineDistance);
-		mUsbThermalPrinter.setTextSize(40);
+		mUsbThermalPrinter.setTextSize(20);
 		//mUsbThermalPrinter.setHighlight(true);
 		mUsbThermalPrinter.setGray(7);
-		mUsbThermalPrinter.addString("This is working now");
+		mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
 		mUsbThermalPrinter.printString();
 		mUsbThermalPrinter.walkPaper(20);
 
@@ -105,14 +105,14 @@ public class PrintingPlugin extends CordovaPlugin {
 		e.printStackTrace();
 		Log.d("print_test","Trying tp!!");
 
-		Toast toast3 = Toast.makeText(cordova.getActivity(), "excemption",Toast.LENGTH_LONG);
+		Toast toast3 = Toast.makeText(cordova.getActivity(), "An error occured",Toast.LENGTH_LONG);
 		toast3.show();
 
 	} finally {
 		//ThermalPrinter.stop(cordova.getActivity().getApplicationContext());
 
-		Toast toast4 = Toast.makeText(cordova.getActivity(), "finally",Toast.LENGTH_LONG);
-		toast4.show();
+		// Toast toast4 = Toast.makeText(cordova.getActivity(), "finally",Toast.LENGTH_LONG);
+		// toast4.show();
 	}
       return true;
   }
