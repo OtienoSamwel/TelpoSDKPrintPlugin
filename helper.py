@@ -1,5 +1,4 @@
 import glob
-# print(glob.glob("/home/kingsman/Desktop/TelpoDemoSDK/app/src/main/jniLibs/arm64-v8a/*.so"))
 import os
 txtfiles = []
 for file in glob.glob("/home/kingsman/Desktop/TelpoDemoSDK/app/src/main/jniLibs/arm64-v8a/*.so"):

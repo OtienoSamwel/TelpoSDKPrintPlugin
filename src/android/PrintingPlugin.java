@@ -1,6 +1,5 @@
 package com.mj.cordova.plugin;
 // The native Toast API
-import android.widget.Toast;
 // Cordova-required packages
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -9,45 +8,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.widget.Toast;
 import android.text.Html;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.BatteryManager;
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import android.view.KeyEvent;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-
 import android.util.Log;
 
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.common.BitMatrix;
-import com.telpo.tps550.api.TelpoException;
-import com.telpo.tps550.api.printer.UsbThermalPrinter;
-import com.telpo.tps550.api.util.StringUtil;
-import com.telpo.tps550.api.util.SystemUtil;
 
+import com.telpo.tps550.api.printer.UsbThermalPrinter;
 
 public class PrintingPlugin extends CordovaPlugin {
 	private int leftDistance = 0;
@@ -55,65 +21,68 @@ public class PrintingPlugin extends CordovaPlugin {
 	private final int PRINTCONTENT = 9;
 
 
-  @Override
-  public boolean execute(String action, JSONArray args,
-    final CallbackContext callbackContext) {
-      // Verify that the user sent a 'show' action
+	@Override
+	public boolean execute(String action, JSONArray args,
+						   final CallbackContext callbackContext) {
+		// Verify that the user sent a 'show' action
 
-	  UsbThermalPrinter mUsbThermalPrinter = new UsbThermalPrinter(cordova.getActivity());
+		UsbThermalPrinter mUsbThermalPrinter = new UsbThermalPrinter(cordova.getActivity());
 
-      if (!action.equals("print")) {
-        callbackContext.error("\"" + action + "\" is not a recognized action.");
-        return false;
-      }
+		if (!action.equals("print")) {
+			callbackContext.error("\"" + action + "\" is not a recognized action.");
+			return false;
+		}
 
-      String message;
-      //String duration;
-      try {
-        JSONObject options = args.getJSONObject(0);
-        message = options.getString("message");
-        //duration = options.getString("duration");
-      } catch (JSONException e) {
-        callbackContext.error("Error encountered: " + e.getMessage());
-        return false;
-      }
+		String message;
+		//String duration;
+		try {
+			JSONObject options = args.getJSONObject(0);
+			message = options.getString("message");
+			//duration = options.getString("duration");
+		} catch (JSONException e) {
+			callbackContext.error("Error encountered: " + e.getMessage());
+			return false;
+		}
 
-      Toast toast1 = Toast.makeText(cordova.getActivity(), message,Toast.LENGTH_LONG);
-      // Display toast
-      toast1.show();
+		Toast toast1 = Toast.makeText(cordova.getActivity(), message,Toast.LENGTH_LONG);
+		// Display toast
+		toast1.show();
 
-	  try {
+		try {
 
-		Toast toast2 = Toast.makeText(cordova.getActivity(), "Trying to print",Toast.LENGTH_LONG);
-		toast2.show();
+			mUsbThermalPrinter.reset();
+			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
+			mUsbThermalPrinter.setLeftIndent(leftDistance);
+			mUsbThermalPrinter.setLineSpace(lineDistance);
+			mUsbThermalPrinter.setTextSize(20);
+			//mUsbThermalPrinter.setHighlight(true);
+			mUsbThermalPrinter.setGray(7);
+			mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
+			mUsbThermalPrinter.printString();
+			mUsbThermalPrinter.walkPaper(20);
 
+			Log.d("print_test","Trying tp print::!!");
 
-		mUsbThermalPrinter.reset();
-		mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
-		mUsbThermalPrinter.setLeftIndent(leftDistance);
-		mUsbThermalPrinter.setLineSpace(lineDistance);
-		mUsbThermalPrinter.setTextSize(20);
-		//mUsbThermalPrinter.setHighlight(true);
-		mUsbThermalPrinter.setGray(7);
-		mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
-		mUsbThermalPrinter.printString();
-		mUsbThermalPrinter.walkPaper(20);
+		} catch (Exception e) {
 
-		Log.d("print_test","Trying tp print::!!");
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-		Log.d("print_test","Trying tp!!");
+			Log.d("print_test","Trying tp!!");
 
-		Toast toast3 = Toast.makeText(cordova.getActivity(), "An error occured",Toast.LENGTH_LONG);
-		toast3.show();
+			String Result = e.toString();
 
-	} finally {
-		//ThermalPrinter.stop(cordova.getActivity().getApplicationContext());
+			if (Result.equals("com.telpo.tps550.api.printer.NoPaperException")) {
 
-		// Toast toast4 = Toast.makeText(cordova.getActivity(), "finally",Toast.LENGTH_LONG);
-		// toast4.show();
+				Toast noPaper = Toast.makeText(cordova.getActivity(), "No Papers",Toast.LENGTH_LONG);
+				noPaper.show();
+			} else if (Result.equals("com.telpo.tps550.api.printer.OverHeatException")) {
+				Toast overheat = Toast.makeText(cordova.getActivity(), "Overheat excemption",Toast.LENGTH_LONG);
+				overheat.show();
+
+			} else {
+				Toast toast3 = Toast.makeText(cordova.getActivity(), "An error occured",Toast.LENGTH_LONG);
+				toast3.show();
+			}
+
+		}
+		return true;
 	}
-      return true;
-  }
 }

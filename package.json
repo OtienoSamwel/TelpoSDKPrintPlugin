@@ -1,7 +1,7 @@
 {
     "name": "cordova-plugin-printingplugin",
     "version": "0.0.1",
-    "description": "An Android Cordova plugin to print using Telpo SDL",
+    "description": "An Android Cordova plugin to print using Telpo SDK",
     "cordova": {
       "id": "cordova-plugin-telpoprintingplugin",
       "platforms": [
@@ -10,7 +10,7 @@
     },
     "repository": {
       "type": "git",
-      "url": "git+https://github.com/mwaijohn/ToastyPlugin.git"
+      "url": "git+https://github.com/mwaijohn/TelpoSDKPrintPlugin.git"
     },
     "keywords": [
       "printing",
@@ -27,7 +27,7 @@
     "author": "John Mwai <mwaijohng@gmail.com>",
     "license": "MIT",
     "bugs": {
-      "url": "https://github.com/mwaijohn/ToastyPlugin/issues"
+      "url": "https://github.com/mwaijohn/TelpoSDKPrintPlugin/issues"
     },
-    "homepage": "https://github.com/mwaijohn/ToastyPlugin"
+    "homepage": "https://github.com/mwaijohn/TelpoSDKPrintPlugin"
   }
