@@ -34,11 +34,12 @@ public class PrintingPlugin extends CordovaPlugin {
 		}
 
 		String message;
-		//String duration;
+		String title;
 		try {
 			JSONObject options = args.getJSONObject(0);
 			message = options.getString("message");
-			//duration = options.getString("duration");
+			title = options.getString("title");
+
 		} catch (JSONException e) {
 			callbackContext.error("Error encountered: " + e.getMessage());
 			return false;
@@ -51,15 +52,30 @@ public class PrintingPlugin extends CordovaPlugin {
 		try {
 
 			mUsbThermalPrinter.reset();
+			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_MIDDLE);
+			mUsbThermalPrinter.setLeftIndent(leftDistance);
+			mUsbThermalPrinter.setLineSpace(lineDistance);
+			mUsbThermalPrinter.setTextSize(40);
+			//mUsbThermalPrinter.setHighlight(true);
+			mUsbThermalPrinter.setGray(7);
+			mUsbThermalPrinter.setBold(true);
+
+			mUsbThermalPrinter.addString(Html.fromHtml(title).toString());
+			mUsbThermalPrinter.printString();
+
+			mUsbThermalPrinter.reset();
 			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
 			mUsbThermalPrinter.setLeftIndent(leftDistance);
 			mUsbThermalPrinter.setLineSpace(lineDistance);
-			mUsbThermalPrinter.setTextSize(20);
+			mUsbThermalPrinter.setTextSize(30);
 			//mUsbThermalPrinter.setHighlight(true);
 			mUsbThermalPrinter.setGray(7);
+			mUsbThermalPrinter.setBold(false);
+
 			mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
 			mUsbThermalPrinter.printString();
-			mUsbThermalPrinter.walkPaper(20);
+
+			mUsbThermalPrinter.walkPaper(15);
 
 			Log.d("print_test","Trying tp print::!!");
 
