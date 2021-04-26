@@ -1,12 +1,19 @@
-# ToastyPlugin
-Cordova test plugin
+# TELPO PRINT PLUGIN
+Cordova TELPO print plugin
+
+## installation
+cordova plugin add path-to-the-repo
+
 
 ## usage
 
 ```
-window.plugins.printingPlugin.print('PAYMENT RECEIPT','<h1><b>This is working now</b></h1><p>text string</p>', function() {
-            console.log('Excelsior!');
+window.plugins.printingPlugin.print('RECEIPT TITLE','receipt content', function() {
+            //console.log('WORKED FINE!');
           }, function(err) {
-            console.log('Uh oh... ' + err);
+            //console.log('Uh oh... ' + err);
           });
 ```
+
+
+
