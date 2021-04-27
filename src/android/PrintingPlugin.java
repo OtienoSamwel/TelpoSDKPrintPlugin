@@ -55,7 +55,7 @@ public class PrintingPlugin extends CordovaPlugin {
 			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_MIDDLE);
 			mUsbThermalPrinter.setLeftIndent(leftDistance);
 			mUsbThermalPrinter.setLineSpace(lineDistance);
-			mUsbThermalPrinter.setTextSize(40);
+			mUsbThermalPrinter.setTextSize(20);
 			//mUsbThermalPrinter.setHighlight(true);
 			mUsbThermalPrinter.setGray(7);
 			mUsbThermalPrinter.setBold(true);
@@ -67,7 +67,7 @@ public class PrintingPlugin extends CordovaPlugin {
 			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
 			mUsbThermalPrinter.setLeftIndent(leftDistance);
 			mUsbThermalPrinter.setLineSpace(lineDistance);
-			mUsbThermalPrinter.setTextSize(30);
+			mUsbThermalPrinter.setTextSize(20);
 			//mUsbThermalPrinter.setHighlight(true);
 			mUsbThermalPrinter.setGray(7);
 			mUsbThermalPrinter.setBold(false);
@@ -75,7 +75,7 @@ public class PrintingPlugin extends CordovaPlugin {
 			mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
 			mUsbThermalPrinter.printString();
 
-			mUsbThermalPrinter.walkPaper(15);
+			mUsbThermalPrinter.walkPaper(20);
 
 			Log.d("print_test","Trying tp print::!!");
 
