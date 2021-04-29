@@ -34,34 +34,50 @@ public class PrintingPlugin extends CordovaPlugin {
 		}
 
 		String message;
+		String header;
 		String title;
 		try {
 			JSONObject options = args.getJSONObject(0);
-			message = options.getString("message");
+			
+			header = options.getString("header");
 			title = options.getString("title");
+			message = options.getString("message");
 
 		} catch (JSONException e) {
 			callbackContext.error("Error encountered: " + e.getMessage());
 			return false;
 		}
 
-		Toast toast1 = Toast.makeText(cordova.getActivity(), message,Toast.LENGTH_LONG);
-		// Display toast
-		toast1.show();
-
 		try {
-
+			//SECTION ONE
 			mUsbThermalPrinter.reset();
 			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_MIDDLE);
 			mUsbThermalPrinter.setLeftIndent(leftDistance);
 			mUsbThermalPrinter.setLineSpace(lineDistance);
 			mUsbThermalPrinter.setTextSize(20);
 			//mUsbThermalPrinter.setHighlight(true);
-			mUsbThermalPrinter.setGray(7);
+			mUsbThermalPrinter.setGray(5);
 			mUsbThermalPrinter.setBold(true);
+
+			mUsbThermalPrinter.addString(Html.fromHtml(header).toString());
+			mUsbThermalPrinter.printString();
+
+			//END SECTION ONE
+			//SECTION TWO
+			mUsbThermalPrinter.reset();
+			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
+			mUsbThermalPrinter.setLeftIndent(leftDistance);
+			mUsbThermalPrinter.setLineSpace(lineDistance);
+			mUsbThermalPrinter.setTextSize(20);
+			//mUsbThermalPrinter.setHighlight(true);
+			mUsbThermalPrinter.setGray(5);
+			mUsbThermalPrinter.setBold(false);
 
 			mUsbThermalPrinter.addString(Html.fromHtml(title).toString());
 			mUsbThermalPrinter.printString();
+
+			//END SECTION TWO
+			//START SECTION THREE
 
 			mUsbThermalPrinter.reset();
 			mUsbThermalPrinter.setAlgin(UsbThermalPrinter.ALGIN_LEFT);
@@ -69,12 +85,12 @@ public class PrintingPlugin extends CordovaPlugin {
 			mUsbThermalPrinter.setLineSpace(lineDistance);
 			mUsbThermalPrinter.setTextSize(20);
 			//mUsbThermalPrinter.setHighlight(true);
-			mUsbThermalPrinter.setGray(7);
+			mUsbThermalPrinter.setGray(5);
 			mUsbThermalPrinter.setBold(false);
 
 			mUsbThermalPrinter.addString(Html.fromHtml(message).toString());
 			mUsbThermalPrinter.printString();
-
+			//END SECTION THREE
 			mUsbThermalPrinter.walkPaper(20);
 
 			Log.d("print_test","Trying tp print::!!");

@@ -3,10 +3,11 @@ function PrintingPlugin() {}
 
 // The function that passes work along to native shells
 // Message is a string, duration may be 'long' or 'short'
-PrintingPlugin.prototype.print = function(title,message,successCallback, errorCallback) {
+PrintingPlugin.prototype.print = function(header,title,message,successCallback, errorCallback) {
   var options = {};
-  options.message = message;
+  options.header = header
   options.title = title
+  options.message = message;
   cordova.exec(successCallback, errorCallback, 'PrintingPlugin', 'print', [options]);
 }
 
