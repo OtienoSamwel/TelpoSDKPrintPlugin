@@ -11,7 +11,6 @@ PrintingPlugin.prototype.print = function(header,title,message,successCallback, 
   cordova.exec(successCallback, errorCallback, 'PrintingPlugin', 'print', [options]);
 }
 
-// Installation constructor that binds ToastyPlugin to window
 PrintingPlugin.install = function() {
   if (!window.plugins) {
     window.plugins = {};
