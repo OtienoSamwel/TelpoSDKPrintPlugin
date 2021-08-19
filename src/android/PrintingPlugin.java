@@ -108,7 +108,10 @@ public class PrintingPlugin extends CordovaPlugin {
 			} else if (Result.equals("com.telpo.tps550.api.printer.OverHeatException")) {
 				Toast overheat = Toast.makeText(cordova.getActivity(), "Overheat excemption",Toast.LENGTH_LONG);
 				overheat.show();
-			} 
+			}else{
+				Toast otherExcemptions = Toast.makeText(cordova.getActivity(), "Low battery. Put device on charger to use the printer",Toast.LENGTH_LONG);
+				otherExcemptions.show();
+			}
 
 		}
 		return true;
