@@ -101,6 +101,9 @@ public class PrintingPlugin extends CordovaPlugin {
 
 			String Result = e.toString();
 
+			// Toast mm = Toast.makeText(cordova.getActivity(),Result,Toast.LENGTH_LONG);
+			// mm.show();
+
 			if (Result.equals("com.telpo.tps550.api.printer.NoPaperException")) {
 
 				Toast noPaper = Toast.makeText(cordova.getActivity(), "No Papers",Toast.LENGTH_LONG);
