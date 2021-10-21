@@ -20,7 +20,6 @@ public class PrintingPlugin extends CordovaPlugin {
 	private int lineDistance = 0;
 	private final int PRINTCONTENT = 9;
 
-
 	@Override
 	public boolean execute(String action, JSONArray args,
 						   final CallbackContext callbackContext) {
