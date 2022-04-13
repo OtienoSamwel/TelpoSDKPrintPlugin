@@ -111,7 +111,7 @@ public class PrintingPlugin extends CordovaPlugin {
 				Toast overheat = Toast.makeText(cordova.getActivity(), "Overheat excemption",Toast.LENGTH_LONG);
 				overheat.show();
 			}else{
-				Toast otherExcemptions = Toast.makeText(cordova.getActivity(), "Unable to print",Toast.LENGTH_LONG);
+				Toast otherExcemptions = Toast.makeText(cordova.getActivity(), "Unable to print"  ,Toast.LENGTH_LONG);
 				otherExcemptions.show();
 			}
 
